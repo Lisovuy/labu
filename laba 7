@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+const int m=4;
+const int n=4;
+double a[m][n], x[m];
+int i, j;
+double _max;
+for(i=0; i<m; i++){
+	for(j=0; j<m; j++){
+		cin>>a[i][j];
+	}
+}
+int temp1, temp2;
+_max = a[0][0];
+for(i=0; i<m; i++){
+	for(j=0; j<m; j++){
+		if(_max<a[i][j]){
+			_max = a[i][j];
+		}
+	}
+	x[i]= _max;
+	temp1 =i;
+	temp2 =j;
+}
+for(i=0; i<m; i++){
+	cout<<temp1<<" "<<temp2<<endl;
+}
+return 0;
+}
