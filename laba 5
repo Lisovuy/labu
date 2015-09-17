@@ -1,0 +1,23 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main (int argc,char *argv[])
+{
+	double x,xk,dx,y;
+	cout<<"Pochatkova tochka =";
+	cin>>x;
+	cout<<"Kinzeva tochka =";
+	cin>>xk;
+	if (x>xk)
+	cout<<"Dani vvedeno nevirno"<<endl;
+	cout<<"Krok=";
+	cin>>dx;
+	cout<<"Dani vvedeno nevirno"<<endl;
+	do
+	{
+		y=cos (x)/2+sqrt((x*x)+3)+log(x);
+		cout<<"X="<<x<<endl;
+		cout<<"Y="<<y<<endl; x+=dx;}
+		while (x<=xk);
+		return 0;
+	}
