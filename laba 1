@@ -1,0 +1,14 @@
+#include <cstdlib>
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main (int argc,char *argv[])
+{double h,d,f,w;
+cout<<"vvedit h=";
+cin>>h;
+cout <<"vvedit d=";
+cin >>f;
+w=(pow(d,2)*f-(sin(h*f))+tan(h))/(f+(h*sqrt(d)));
+cout<<"w="<< w <<endl;
+return 0;
+}
