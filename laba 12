@@ -1,0 +1,147 @@
+#include <iostream>
+#include <conio.h>
+#include <windows.h>
+#include <iomanip>
+using namespace std;
+#define m 5
+struct menu
+{
+char a[45];
+}
+menu[5];
+struct Service
+{
+char street[64];
+int house_number;
+int number_of;
+}st;
+void Menu(int); 
+void inp(Service st); 
+void out(Service st); 
+void search_street(Service st);
+FILE *f;
+int main(){
+setlocale(LC_ALL,"Ukrainian");
+strcpy(menu[0].a," Çàâàíòàæèòè ³íôîðìàö³þ ");
+strcpy(menu[1].a," Âèâåñòè íà åêðàí ");
+strcpy(menu[2].a," Ïîøóê ïî âóëèö³ ");
+strcpy(menu[5].a,"Âèõ³ä"); 
+SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15);
+cout<<menu[0].a<<endl;
+cout<<menu[1].a<<endl;
+cout<<menu[2].a<<endl;
+cout<<menu[3].a<<endl;
+int code,c=1;
+while(1)
+{
+code=getch();
+system("cls");
+switch(code)
+{
+case 72:
+{
+if(c>0)
+c--;
+else
+cout<<"\a";
+}
+break;
+case 80:
+{
+if(c<5)
+c++;
+else
+cout<<"\a";
+}
+break;
+case 13:
+switch(c)
+{
+case 0:inp(st);break;
+case 1:out(st);break;
+case 2:search_street(st);break;
+case 3:
+{
+return 0;
+}
+}
+}
+Menu(c);
+}
+return 0;
+}
+void Menu(int c)
+{
+for(int i=0;i<7;i++)
+if(i=c)
+{
+SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+cout<<menu[i].a<<endl;
+}
+else
+{
+SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+cout<<menu[i].a<<endl;
+}
+}
+void inp(Service st)
+{
+f=fopen("baza.txt","a+");
+cout<<"Âóëèöÿ:";
+cin>>st.street;
+cout<<"Íîìåð áóäèíêó:";
+cin>>st.house_number;
+cout<<"Íîìåð êâàðòèðè:";
+cin>>st.number_of;
+fwrite(&st,sizeof(Service),1,f);
+fclose(f);
+}
+void out(Service st)
+{
+f=fopen("baza.txt","ab+");
+int c;
+int k = 0;
+while(c=fread(&st,sizeof(Service),1,f));
+{
+cout<<"Âóëèöÿ"<<st.street<<endl;
+cout<<"Íîìåð áóäèíêó: "<<st.house_number<<endl; 
+cout<<"Ê³ëüê³ñòü êâàðòèð: "<<st.number_of<<endl;
+cout<<endl;
+for(int i=0;i<50;i++)
+{
+cout<<"*";
+}
+cout<<endl;
+}
+cout<<endl;
+fclose(f);
+}
+void search_street(Service st)
+{
+f=fopen("baza.txt","ab+");
+int c;
+int k=0;
+char buf[64];
+cout<<"âèðîáíèê:";
+cin>>buf;
+while(c=fread(&st,sizeof(Service),1,f));
+{
+if(strcmp(st.street, buf)==0)
+{
+k=1;
+cout<<"Âóëèöÿ"<<st.street<<endl; 
+cout<<"Íîìåð áóäèíêó:"<<st.house_number<<endl; 
+cout<<"Ê³ëüê³ñòü êâàðòèð:"<<st.number_of<<endl;
+cout<<endl; 
+cout<<endl;
+for(int i=0; i<50; i++)
+{
+cout<<"*";
+}
+cout<<endl;
+}
+cout<<endl;
+}
+if(!k)
+cout<<"òàêèõ ïðèñòðî¿â íå çíàéäåíî\n";
+}
