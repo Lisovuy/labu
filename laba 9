@@ -1,0 +1,26 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+const float a=3.28;
+double p(double k)
+{
+double p1;
+p1=(exp(a*k)+exp(2))*log(a*k);
+return p1;
+}
+int main()
+{
+double x,y,z,F;
+cout<<"x=";
+cin>>x;
+cout<<"y=";
+cin>>y;
+cout<<"z=";
+cin>>z;
+F=((p(x)+p(z)*x-p(y)))*1/3;
+cout<<"F="<<F<<endl;
+system ("pause");
+return 0;
+}
+
+   
