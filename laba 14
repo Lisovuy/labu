@@ -1,0 +1,62 @@
+#include <cstdlib>
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+using namespace std;
+void write(FILE* );
+void read(FILE* );
+int main()
+{ 
+   FILE *f; 	
+      char c;              		
+m:  cout<<"w - write;\n"
+         "r - read;\n"
+         "e - exit.\n"<<endl;    
+	cin>>c;
+	system("cls");
+	switch(c){
+ case 'w': f=fopen("text.txt","rt+"); write(f); fclose(f);  break;
+ case 'r': f=fopen("text.txt","rt+"); read(f); fclose(f); break;
+ case 'e': exit(0);fclose(f); break;
+default: goto m; break;
+}
+    goto m;
+    return EXIT_SUCCESS;
+}
+void write(FILE *f)
+ {
+     char d[50],nl[50];
+     char cl[50];
+     int i=0,n=3;
+  for(i=0; i<n; i++)
+   {  
+       cout<<"Duscpl| count_lec| name lector|"<<endl;
+       scanf("%s %s %s",&d,&cl,&nl);
+   fprintf(f,"%s %s %s\n",d,cl,nl);
+   }
+system("cls");
+} 
+void read(FILE *f)
+ {  
+    char d[50], nl[50];
+    char cl[50];
+    int i=0,max,n=3,k=0;
+
+    cout<<"Duscpl| count_lec| name lector|"<<endl;
+for(i=0; i<n; i++)
+  {   
+       fscanf(f,"%s %s %s ",&d,&cl,&nl);
+       printf("%s| %s| %s|\n",d,cl,nl);
+     
+  }
+    max=cl[0];
+  for (i=1; i<n; i++)
+ { fscanf(f,"%s %s %s ",&d,&cl,&nl);
+  if(cl[i]>cl[i-1]){ max=cl[i]; k=i;}}
+
+  cout<<"Name Lector:"<<nl[k]<<endl;
+  cout<<"Count lect hours"<<max<<endl;
+    getch();
+    system("cls");
+}
+  
