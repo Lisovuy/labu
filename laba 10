@@ -1,0 +1,46 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+const float a=0.98;
+const float c=1.1;
+const int n=3;
+const int m=5;
+void fx(double b[m][n],double*x)
+{
+int i,j;
+for(i=0;i<n;i++)
+{
+x[i]=1;
+for(j=0;j<m;j++)
+{
+x[i]*=a*tan(c*b[i][j]);
+}
+}
+}
+double ff(double b[m][n])
+{
+double x[n], dob=1,f;
+int i;
+fx(b,x);
+for(i=0;i<n;i++)
+{
+dob*=x[i]*x[i]+a*sqrt(x[i]);
+}
+f=dob;
+return f;
+}
+int main()
+{
+double b[m][n];
+int i,j;
+for(i=0;i<n;i++)
+{
+for(j=0;j<m;j++)
+{
+cin>>b[i][j];
+}
+}
+cout<<ff(b)<<endl;
+system ("pause");
+return 0;
+}
