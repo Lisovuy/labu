@@ -1,0 +1,17 @@
+#include <cstdlib>
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main (int argc,char *argv[])
+{
+	double S,a,i;
+	int n;
+	cout<<"a=";
+	cin>>a;
+	S=1;
+	for(i=1;i<7;i++)
+{
+	S*=(i+2)/(a+i);}
+	cout<<"Rezultat="<<S<<endl;
+	return 0;
+}
