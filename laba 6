@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	const int arr = 20;
+	int i;
+	double sum =0;
+	double a[arr];
+	cout<<"enter the array elements:\n";
+	for(i=0; i<arr; i++)
+	{
+		cout<<"a["<<i+1<<"]=";
+		cin>>a[i];
+	}
+	for(i=0; i<arr; i++){
+		sum+=a[i];
+	}
+	cout<<"The sum of array elements is "<<sum<<endl;
+	return 0;
+}
