@@ -1,0 +1,89 @@
+#include <iostream>
+#include <fstream>
+//#include <conio.h>
+#include <stdlib.h> 
+using namespace std;
+void fileCreate() { 
+cout<<"\nÔàéë ñòâîðåíî, çàïèø³òü ³íôîðìàö³þ!"<<endl; 
+ofstream fileCreate("file.txt", ios::out); 
+char streetName[25]; 
+int houseNumber;
+int numberOfFlats;
+char y, Y; 
+char temp; 
+temp = 'y';
+while(temp == 'y' || temp == 'Y') { 
+cout<<"\nÂóëèöÿ-";
+cin>>streetName;
+fileCreate<<"\nBóëèöÿ - "<<streetName<<endl; 
+cout<<"Hoìåð áóäèíêó-";
+cin>>houseNumber;
+fileCreate<<"Hoìåð áóäèíêó - "<<houseNumber<<endl;
+cout<<"Kiëüê³ñòü êâàðòèð -";
+cin>>numberOfFlats;
+fileCreate<<"Kiëüê³ñòü êâàðòèð - "<<numberOfFlats<<endl;
+cout<<"Ïðîäîâæèòè çàïèñ ó ôàéë(y/n)?";
+cin>>temp;
+}
+fileCreate.close();
+}
+void readFile() {
+  cout<<"\nÇ÷èòóâàííÿ ³íôîðìàö³¿ ç ôàéëó"<<endl;
+  ifstream readFile("file.txt", ios::in); 
+  char temp;
+  while(readFile.get(temp))
+cout<<temp;
+readFile.close();
+}
+void continueToWrite() {
+cout<<"\nÄîïèñóâàííÿ ³íôîðìàö³¿!"<<endl; 
+ofstream continueToWrite("file.txt", ios::app); 
+char streetName[25]; 
+int houseNumber; 
+int numberOfFlats; 
+char y, Y; 
+char temp;
+temp = 'y';
+while(temp == 'y' ||  temp == 'Y') { 
+cout<<"\nÂóëèöÿ -";
+cin>>streetName;
+continueToWrite<<"\nÂóëèöÿ - "<<streetName<<endl;
+cout<<"Hoìåð áóäèíêó -";
+cin>>houseNumber;
+continueToWrite<<"Hoìåð áóäèíêó - "<<houseNumber<<endl;
+cout<<"ê³ëüê³ñòü êâàðòèð -";
+cin>>numberOfFlats;
+continueToWrite<<"Ê³ëüê³ñòü êâàðòèð - "<<numberOfFlats<<endl;
+cout<<"Ïðîäîâæèòè çàïèñ ó ôàéëó(y/n)?"; 
+cin>>temp;
+}
+continueToWrite.close();
+}
+int main() 
+{
+setlocale (LC_CTYPE,"ukr");
+int temp = 0; 
+while(temp != 4) {
+	system("cls");
+cout<<"Âèáåð³òü îäèí ³ç ïóíêò³â: "
+"\nl - Ñòâîðèòè ôàéë òà çàïèñàòè äàí³ ó íüîãî" 
+"\n2 - Ç÷èòàòè ³íôîðìàö³þ ç ôàéëó"
+"\n3 - Äîïèñàòè äàí³ ó ôàéë"
+"\n3 - Âèõ³ä";
+cout<<"Âèáðàíèé ïóíêò - Ïðîäîâæèòè";
+cin>>temp;
+switch(temp) {
+case 1:
+fileCreate();
+break;
+case 2:
+readFile();
+break; 
+case 3:
+continueToWrite();
+break;
+} 
+}
+system ("pause");
+return 0;
+}
