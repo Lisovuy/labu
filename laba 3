@@ -1,0 +1,27 @@
+#include <cstdlib>
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main (int argc,char *argv[])
+{
+	int n;
+	cout<<"Vedit kut n=";
+	cin>>n;
+	switch (n)
+	{
+	case 1981:cout<<"PS/MS-DOS"; break;
+	case 1982:;
+	case 1983:cout<<"MS-DOS 2.0/2.11"; break;
+	case 1984:cout<<"MS-DOS 3.0"; break;
+	case 1985:;
+	case 1986:;
+	case 1987:cout<<"MS-DOS 3.3"; break;
+	case 1988:cout<<"MS-DOS 4.0"; break;
+	case 1989:;
+	case 1990:;
+	case 1991:cout<<"MS-DOS 5.0"; break;
+	case 1992:;
+	case 1993:cout<<"MS-DOS 6.0/6.2"; break;
+	default:cout<<"Pomnla";}
+	return 0;
+}
